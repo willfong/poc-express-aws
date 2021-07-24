@@ -1,6 +1,6 @@
 # Express + AWS
 
-POC for Express applications using AWS
+POC for Express applications using AWS. Testing out AWS features and functionality. 
 
 ## Getting Started
 
@@ -23,3 +23,6 @@ yarn install
 yarn dev
 ```
 
+## Reference
+
+- https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html
