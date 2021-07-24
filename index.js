@@ -1,16 +1,19 @@
-const express = require('express');
-const morgan = require('morgan');
+import express from "express";
+import morgan from "morgan";
+import { metricIncrement } from "./services/cloudwatch.js";
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-app.use(morgan('combined'));
+app.use(morgan("combined"));
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
+    metricIncrement("200");
     res.send("Hello World");
 });
 
-app.use((req, res) => {
+app.use( async (req, res) => {
+    metricIncrement("404");
     res.status(404).send("404: Page Not Found");
 });
 
