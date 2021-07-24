@@ -2,6 +2,17 @@
 
 POC for Express applications using AWS. Testing out AWS features and functionality. 
 
+## Current Features
+
+### CloudWatch
+- PutMetricDataCommand - Add metrics for monitoring/graphing
+
+### S3
+- ListBucketsCommand - List buckets that are available
+- ListObjectsV2Command - List objects in a specific bucket
+- PutObjectCommand - Put an object into a bucket
+- GetObjectCommand - Get an object from a bucket
+
 ## Getting Started
 
 Set up your AWS credentials:
