@@ -7,8 +7,13 @@ const client = new CloudWatchClient();
 const _putMetricDataCommand = async (MetricData) => {
     const input = { MetricData, Namespace };
     const command = new PutMetricDataCommand(input);
-    const response = await client.send(command);
-    return response;
+    try {
+        const response = await client.send(command);
+        return response;
+    } catch(err) {
+        return err;
+    }
+    
 };
 
 export const metricIncrement = async (MetricName) => {
