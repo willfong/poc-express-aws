@@ -1,6 +1,6 @@
 # Express + AWS
 
-POC for Express applications using AWS. Testing out AWS features and functionality. 
+This is a proof of concept demo for Express applications using AWS. Testing out AWS features and functionality, with modules available to copy and paste to other services.
 
 ## Current Features
 
