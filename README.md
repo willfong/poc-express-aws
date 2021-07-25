@@ -13,6 +13,14 @@ POC for Express applications using AWS. Testing out AWS features and functionali
 - PutObjectCommand - Put an object into a bucket
 - GetObjectCommand - Get an object from a bucket
 
+## Upcoming Features
+
+- Convert to Typescript
+- Cognito
+- DynamoDB
+- SES
+- SQS
+
 ## Getting Started
 
 Set up your AWS credentials:
