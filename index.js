@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import { metricIncrement } from "./services/cloudwatch.js";
 import { bucketList, objectList, objectPut, objectGet } from "./services/s3.js";
+import { clustersList, servicesByCluster, servicesListInstances } from "./services/ecs.js";
 
 const PORT = process.env.PORT || 3000;
 
@@ -49,6 +50,25 @@ app.get("/s3/get-object", async (req, res) => {
     if (!bucket || !filename) return res.status(400).send("400: Missing data");
     const [err, response] = await objectGet(bucket, filename);
     res.json(response)
+});
+
+app.get("/ecs/list-clusters", async (req, res) => {
+    const [err, response] = await clustersList();
+    res.json(response);
+});
+
+app.get("/ecs/list-services", async (req, res) => {
+    const {arn} = req.query;
+    if (!arn) return res.status(400).send("400: Missing cluster ARN");
+    const [err, response] = await servicesByCluster(arn);
+    res.json(response);
+});
+
+app.get("/ecs/list-service-instances", async (req, res) => {
+    const {cluster, service} = req.query;
+    if (!cluster || !service) return res.status(400).send("400: Missing service ARN");
+    const [err, response] = await servicesListInstances(cluster, service);
+    res.json(response);
 });
 
 app.use( async (req, res) => {
